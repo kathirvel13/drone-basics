@@ -19,6 +19,13 @@ void setup() {
   } else {
     Serial.println("Connection failed!");
   }
+
+  mpu.setXAccelOffset(-1535); //Set your accelerometer offset for axis X
+  mpu.setYAccelOffset(-1043); //Set your accelerometer offset for axis Y
+  mpu.setZAccelOffset(625); //Set your accelerometer offset for axis Z
+  mpu.setXGyroOffset(57);  //Set your gyro offset for axis X
+  mpu.setYGyroOffset(-47);  //Set your gyro offset for axis Y
+  mpu.setZGyroOffset(7);  //Set your gyro offset for axis Z
 }
 
 void loop() {
@@ -27,22 +34,28 @@ void loop() {
   mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
   // Converting in terms of g m/s^2 (gravity)
-  // 2 ^ 10 = 16384
   float Ax = ax / 16384.0;
   float Ay = ay / 16384.0;
   float Az = az / 16384.0;
 
   // Converting in terms of angular velocity deg/s
-  // = 131
   float Gx = gx / 131.0;
   float Gy = gy / 131.0;
   float Gz = gz / 131.0;
 
-    // Calculate pitch and roll angles
+  // Calculate pitch and roll angles
   pitch = atan2(ax, sqrt(ay * ay + az * az)) * 180.0 / PI;
   roll = atan2(ay, sqrt(ax * ax + az * az)) * 180.0 / PI;
-  // yaw = atan2(az, sqrt(ax * ax + ay * ay)) * 180.0 / PI;
-  yaw = atan2(ay, az) * 180.0 / PI;
+  yaw = atan2(az, sqrt(ax * ax + ay * ay)) * 180.0 / PI;
+  // yaw = atan2(ay, az) * 180.0 / PI;
+
+  Serial.print("Raw Data: ax = "); Serial.print(ax);
+  Serial.print(", ay = "); Serial.print(ay);
+  Serial.print(", az = "); Serial.println(az);
+
+  Serial.print("Raw Data: gx = "); Serial.print(gx);
+  Serial.print(", gy = "); Serial.print(gy);
+  Serial.print(", gz = "); Serial.println(gz);
 
   Serial.print("Accelerometer: X = ");
   Serial.print(Ax);
@@ -50,7 +63,7 @@ void loop() {
   Serial.print(Ay);
   Serial.print(", Z = ");
   Serial.print(Az);
-  Serial.println(" m/s^2");
+  Serial.println(" g m/s^2");
 
   Serial.print("Gyroscope    : X = ");
   Serial.print(Gx);
