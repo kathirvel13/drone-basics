@@ -82,8 +82,8 @@ void loop() {
   Serial.println(" deg;");
 
   Serial.print("Temperature: ");
-	Serial.print(mpu.getTemperature() / 340 + 36.53);
-	Serial.println(" degC\n");
+  Serial.print(mpu.getTemperature() / 340 + 36.53);
+  Serial.println(" degC\n");
 
   delay(1000);
 }
