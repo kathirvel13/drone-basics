@@ -1,7 +1,7 @@
 S No,Component Type,Reference Designator,Value,Mfr Name,Mfr Part Number,Quantity,Note,Package / Footprint,Customer Reference
 1,,"C1, C12, C4, C5",10uF,Murata,,4,,C_0603_1608Metric,
-2,,"C10, C13, C14, C6, C7, C8",100nF,Murata,,6,,C_0603_1608Metric,
-3,,C11,10nf,Murata,,1,,C_0603_1608Metric,
+2,,"C10, C13, C14, C6, C7, C8",100nF,Murata,GRM188R72A104KA35D,6,100V,C_0603_1608Metric,
+3,,C11,10nf,Murata,GRM188R72A103KA01D,1,100V,C_0603_1608Metric,
 4,,"C15, C16, C17, C18",1uF,Murata,TMK107B7105KA-T,4,25V,C_0603_1608Metric,
 5,,C2,470pF,Murata,0603B471K500NT-FH,1,50V,C_0603_1608Metric,
 6,,C3,2.2uF,Murata,CL21B225KBYNNWE,1,50V,C_0805_2012Metric,
